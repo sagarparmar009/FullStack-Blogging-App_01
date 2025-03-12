@@ -14,18 +14,17 @@ spec:
     spec:
       containers:
         - name: bloggingapp
-          image: sagarparmar27/bloggingapp:latest # Updated image to private DockerHub image
+          image: sagarparmar27/bloggingapp:latest  # Updated image to private DockerHub image
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
-         imagePull-secret:
-           - name: regcred
-     
+      imagePullSecrets:
+        - name: regcred  # Corrected here from imagePull-secret to imagePullSecrets
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: bloggingapp-ssvc
+  name: bloggingapp-service  # Fixed typo in the service name (was bloggingapp-ssvc)
 spec:
   selector:
     app: bloggingapp
@@ -34,3 +33,4 @@ spec:
       port: 80
       targetPort: 8080 
   type: LoadBalancer
+
