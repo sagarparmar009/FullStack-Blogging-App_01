@@ -18,8 +18,6 @@ spec:
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
-      imagePullSecrets:
-        - name: regcred  # Corrected here from imagePull-secret to imagePullSecrets
 ---
 apiVersion: v1
 kind: Service
